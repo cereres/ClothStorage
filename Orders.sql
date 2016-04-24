@@ -1,0 +1,40 @@
+--------------------------------------------------------
+--  File created - воскресенье-апреля-24-2016   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table ORDERS
+--------------------------------------------------------
+
+  CREATE TABLE "STORE"."ORDERS" 
+   (	"ORDER_ID" NUMBER, 
+	"CUSTOMER_ID" NUMBER, 
+	"TOTAL_SUM" NUMBER
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007094
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "STORE"."SYS_C007094" ON "STORE"."ORDERS" ("ORDER_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  Constraints for Table ORDERS
+--------------------------------------------------------
+
+  ALTER TABLE "STORE"."ORDERS" ADD PRIMARY KEY ("ORDER_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table ORDERS
+--------------------------------------------------------
+
+  ALTER TABLE "STORE"."ORDERS" ADD CONSTRAINT "FK_CUSTOMERS" FOREIGN KEY ("CUSTOMER_ID")
+	  REFERENCES "STORE"."CUSTOMERS" ("CUSTOMER_ID") ON DELETE CASCADE ENABLE;
